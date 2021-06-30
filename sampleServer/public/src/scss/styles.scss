@@ -7,116 +7,148 @@
   box-sizing: border-box;
 }
 
+
+ .menu {
+    grid-column-start: -2;
+  }
+  .center-image {
+    grid-column: 2 / -2;
+    grid-row: 2 / -2;
+    background-image: url("https://images.unsplash.com/photo-1583309219338-a582f1f9ca6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1364&q=80");
+    background-size: cover;
+    background-position: center;
+  }
+
+.number__row {
+    background-color: $bg;
+    display: grid;
+	  grid-template-columns: 1fr;
+    gap: 1px;
+    height: 100%;
+    align-items: stretch;
+    .number {
+	  display: flex;
+      justify-content: center;
+      align-items: center;
+	  background-color: white;
+      cursor: pointer;
+      transition: color 0.3s linear, background-color 0.3s linear;
+      &:hover {
+        background-color: $bg;
+        color: white;
+      }
+    }
+  }
+
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: $bg;
   width: 100%;
   height: 100vh;
 }
-
 .grid{
 	display: grid;
 	height: 100vh;
 	padding:15px;
 	margin:0 auto;
 	grid-template:
-		"header header header header " 20px
-		"black purple lWhite rWhite" 1fr 
-		"red mWhite lWhite rWhite" 1fr 
-		"red yellow lWhite rWhite" 1fr / 1fr 1fr 1fr 1fr; 
+		"header header header header" 0.2fr
+		"leftTopContent lImage rImage rightTopContent" 3fr
+		"leftBottomContent lImage rImage rightBottomContent" 0.3fr 
+		"footer footer footer footer" 0.2fr / 0.1fr 3fr 3fr 0.1fr; 
 		
 }
-
-.header{
-	color: #fff;
-	background-color: #666666;
-	grid-area: header;
-	padding: 3px;
+.lImage{
 	
+	background-image: url("https://images.unsplash.com/photo-1583309219338-a582f1f9ca6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1364&q=80");
+    background-size: cover;
+    background-position: center;
+	grid-column: 2 / -3;
+	grid-row: 2 / 4;
 }
-
-.black{
+.content{
+	position: absolute;
+    bottom: 47%;
+    right: 47%;
 	color: white;
-	font-size: 20px;
+	font-size: 50px;
 	display: flex;
-  	justify-content: flex-start;
-  	align-items: flex-start;
-	background-color: black;
-	grid-area: black;
-	padding: 10px;
-	
-
+    justify-content: center;
+    align-items: center;
 }
-.black > ul > li:nth-child(1){
-	font-size: 20px;
-	-ms-transform: rotateX(180deg); // IE 9 이상에서 사용
-	-webkit-transform: rotateX(180deg); // 사파리, 크롬, 오페라 브라우저 사용
-	transform: rotateX(180deg);
+.rImage{
+	background-image: url("https://images.unsplash.com/photo-1583309219338-a582f1f9ca6b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1364&q=80");
+    background-size: cover;
+    background-position: center;
+	grid-column: 3 / -2;
+	grid-row: 2 / 4;
 }
-.black > ul > li:nth-child(3){
-	font-size: 20px;
-	-ms-transform: rotateX(180deg); // IE 9 이상에서 사용
-	-webkit-transform: rotateX(180deg); // 사파리, 크롬, 오페라 브라우저 사용
-	transform: rotateX(180deg);
-}
-.purple{
-	background-color: purple;
-	grid-area: purple;
-}
-.red{
-	color: black;
-	font-size: 20px;
-	display: flex;
-  	justify-content: flex-start;
-  	align-items: flex-start;
-	background-color: red;
-	grid-area: red;
-	padding: 10px;
-}
-.mWhite{
+.header{
+	color: #ff7f00;
+	border: 4px;
+	border-style: solid;
+	border-color: #ff7f00;
+	grid-column: 1 / -1;
 	background-color: white;
-	grid-area: white;
-}
-.yellow{
-	color: black;
-	font-size: 20px;
 	display: flex;
-  	justify-content: flex-start;
-  	align-items: flex-start;
-	background-color: yellow;
-	grid-area: yellow;
-	padding: 10px;
+    justify-content: center;
+    align-items: center;
 }
-
-.lWhite{
-	color: black;
-	font-size: 10px;
-	display: flex;
-  	justify-content: flex-start;
-  	align-items: flex-start;
+.leftTopContent{
+	color: white;
+	border: 4px;
+	border-style: solid;
+	border-color: #ff7f00;
+	background-color: #ff7f00;
+	grid-column: 1 / -4;
+}
+.leftBottomContent{
+	color: #ff7f00;
+	border: 4px;
+	border-style: solid;
+	border-color: #ff7f00;
 	background-color: white;
-	grid-area: lWhite;
-	padding: 10px;
+	grid-column: 1 / -4;
 }
-.rWhite{
-	color: black;
-	font-size: 10px;
-	display: flex;
-  	justify-content: flex-start;
-  	align-items: flex-start;
+.rightTopContent{
+	color: white;
+	border: 4px;
+	border-style: solid;
+	border-color: #ff7f00;
+	background-color: green;
+	grid-column: -2 / -1;
+}
+.rightBottomContent{
+	color: white;
+	border: 4px;
+	border-style: solid;
+	border-color: #ff7f00;
+	background-color: green;
+	grid-column: -2 / -1;
+}
+.footer{
+	color: #ff7f00;
+	border: 4px;
+	border-style: solid;
+	border-color: #ff7f00;
+	grid-column: 1 / -1;
 	background-color: white;
-	grid-area: rWhite;
-	padding: 10px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.lWhite > ul > li:first-child{
-	font-size: 10px;
-	padding-bottom: 10px;
+.icon{
+	width: 3%;
+    height: 7%;
+    position: absolute;
+    bottom: 50px;
+    right: 70px;
+    background-color: #ff7f00;
+    padding: 0px 10px;
+    z-index: 1;
+	background-image: url("https://image.flaticon.com/icons/png/512/14/14238.png");
+    background-size: cover;
+    background-position: center;
 }
-.lWhite > ul > li:nth-child(7){
-	font-size: 10px;
-	background-color: purple;
-}
-.rWhite > ul > li:first-child{
-	font-size: 10px;
-	padding-bottom: 10px;
-}
+    
