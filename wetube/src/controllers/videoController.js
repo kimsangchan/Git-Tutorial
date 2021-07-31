@@ -1,24 +1,26 @@
-const fakeUser = {
-	username: "Nicolas",
-	loggedIn: false,
-};
+import Video from "../models/Video";
 
-export const watch = (req, res) => res.send("Watch Video");
-export const remove = (req, res) => {
-	res.send("Remove Video");
+export const home = async (req, res) => {
+	const videos = await Video.find({});
+  	return res.render("home", { pageTitle: "Home", videos});
 };
-// export const trending = (req, res) => {
-// 	res.render('home', { title: 'Goorm', message: 'Welcome to GoormEdu'});
-// };
-export const trending = (req, res) => {
-	res.render("home", {pageTitle: "Home", fakeUser: fakeUser}); // render to ***.pug 
+export const watch = (req, res) => {
+  	const { id } = req.params;
+	return res.render("watch", { pageTitle: `Watching` });
 };
-export const digit = (req, res) => {
-  return res.send(`Watch Video #${req.params.id}`);
+export const getEdit = (req, res) => {
+  	const { id } = req.params;
+	return res.render("edit", { pageTitle: `Editing` });
 };
-export const edit = (req, res) => {
-  return res.send("Edit");
+export const postEdit = (req, res) => {
+  const { id } = req.params;
+  const { title } = req.body;
+  return res.redirect(`/videos/${id}`);
 };
-
-export const search = (req, res) => res.send("Search");
-export const upload = (req, res) => res.send("Upload");
+export const getUpload = (req, res) => {
+  return res.render("upload", { pageTitle: "Upload Video" });
+};
+export const postUpload = (req, res) => {
+  	const { title } = req.body;
+	 return res.redirect("/");
+};
