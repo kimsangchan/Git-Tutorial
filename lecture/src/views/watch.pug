@@ -1,0 +1,11 @@
+extends base.pug
+
+block content
+	div
+		p=movie.summary
+		small=movie.year
+		br
+		small=movie.rating
+	a(href=`${movie.id}/edit`) Edit movie &rarr;
+	br
+	a(href=`${movie.id}/delete`) Delete movie &rarr;

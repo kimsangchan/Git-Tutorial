@@ -1,0 +1,9 @@
+extends base.pug
+
+block content
+	h4 Change Title of movie
+	form(method="POST")
+		input(name="title", placeholder="Movie Title", value=movie.title, required)
+		input(placeholder="Summary", required, type="text", name="summary", value=movie.summary)
+		input(placeholder="Genres, separated by comma.", required, type="text", name="genres", value=movie.genres.join())
+		input(value="Save",type="submit") 
