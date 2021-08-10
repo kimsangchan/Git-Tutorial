@@ -1,6 +1,7 @@
 extends base.pug
 
 block content
+	video(src="/" + movie.fileUrl, controls)
 	div
 		p=movie.summary
 		small=movie.year

@@ -48,6 +48,8 @@ export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload movie" });
 };
 export const postUpload = async (req, res) => {	// async need to await
+	const {path: fileUrl} = req.file;
+	console.log("url: ", fileUrl);
   	const { title, summary, year, rating, genres } = req.body;
 	console.log("check body: "+JSON.stringify(req.body));
 	try{
@@ -56,6 +58,7 @@ export const postUpload = async (req, res) => {	// async need to await
 			summary,
 			year,
 			rating,
+			fileUrl,
 		    genres: Movie.formatGenres(genres),
 		});
 		return res.redirect("/");

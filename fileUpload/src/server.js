@@ -3,9 +3,6 @@ import morgan from "morgan";
 import session from "express-session";
 import bodyParser from "body-parser";
 import rootRouter from "./routers/rootRouter";
-import movieRouter from "./routers/movieRouter";
-import userRouter from "./routers/userRouter";
-import { localsMiddleware } from "./middlewares";
 
 console.log(process.cwd()); // current work directory
 
@@ -28,10 +25,7 @@ app.use(
 
 
 
-app.use(localsMiddleware);
 app.use("/", rootRouter);
-app.use("/movies", movieRouter);
-app.use("/users", userRouter);
 
 
 

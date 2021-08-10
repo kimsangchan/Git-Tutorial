@@ -1,10 +1,10 @@
 extends base
-include mixins/video
+include mixins/movie
 block content
-	h2 Welcome here you will see the trending videos
+	h2 Welcome here you will see the trending movies
 	ul
-		each video in videos
-			+video(video)
+		each movie in movies
+			+movie(movie)
 		else
 			li Sorry nothing found.
 		
